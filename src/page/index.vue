@@ -28,17 +28,7 @@
     v-model="showBase"
     :sku="sku"
     :goods="goods"
-    :goods-id="goodsId"
     :hide-stock="sku.hide_stock"
-    :quota="quota"
-    :quota-used="quotaUsed"
-    :reset-stepper-on-hide="resetStepperOnHide"
-    :reset-selected-sku-on-hide="resetSelectedSkuOnHide"
-    :close-on-click-overlay="closeOnClickOverlay"
-    :disable-stepper-input="disableStepperInput"
-    :message-config="messageConfig"
-    @buy-clicked="onBuyClicked"
-    @add-cart="onAddCartClicked"
   />
   </div>
 </template>
@@ -179,6 +169,7 @@ export default {
 #index {
   display: flex;
   justify-content: space-between;
+  width: 375px;
   #category {
     width: 100px;
     height: 100vh;
@@ -199,7 +190,7 @@ export default {
     }
   }
   #goodslist {
-    width: 260px;
+    width: 265px;
     height: 100vh;
     #toolbar{
       border: 1px solid #f5f5f5;
@@ -214,7 +205,7 @@ export default {
       }
     }
     ul{
-      margin-right: 8px;
+      // margin-left: 8px;
       height: calc(100vh - 44px);   
       overflow-y: auto;
       .goodsitem{
