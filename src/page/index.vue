@@ -29,6 +29,7 @@
     :sku="sku"
     :goods="goods"
     :hide-stock="sku.hide_stock"
+    :buy-clicked="buyClicked"
   />
   </div>
 </template>
@@ -161,6 +162,9 @@ export default {
   methods: {
     chCategory(i){
       this.active=i;
+    },
+    buyClicked(){
+       this.$router.push({name: '/order/page1',params:{ id:'1'}});
     }
   }
 };

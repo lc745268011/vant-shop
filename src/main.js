@@ -13,6 +13,20 @@ function setHtmlFontSize(){
 };
 setHtmlFontSize();
 import 'lib-flexible/flexible'
+
+import { ContactCard, ContactList, ContactEdit , Popup , Button,SubmitBar,AddressList,AddressEdit,Area,Card} from 'vant';
+Vue.use(ContactCard);
+Vue.use(ContactList);
+Vue.use(ContactEdit);
+Vue.use(Popup);
+Vue.use(Button);
+Vue.use(SubmitBar);
+Vue.use(AddressList);
+Vue.use(AddressEdit);
+Vue.use(Area);
+Vue.use(Card);
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

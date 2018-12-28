@@ -11,16 +11,18 @@
             </div>
             <ul class="clearfix">
             <li v-for="(item,index) in goodlists" class="goodsitem fl">
-            <img :src="item.goodsImg" alt>
-            <div class="clearfix gmidinfo">
-                <span class="fl advance" v-show="item.isadvance">预售</span>{{item.gname}}
-            </div>
-            <div class="gbotinfo">
-                <div class="gprice">￥{{item.gprice}}</div>
-                <div class="cart" @click="showBase = true">
-                <img src="../assets/cart.png" alt="">
-                </div>
-            </div>
+                <router-link to="/goods">
+                    <img :src="item.goodsImg" alt>
+                    <div class="clearfix gmidinfo">
+                        <span class="fl advance" v-show="item.isadvance">预售</span>{{item.gname}}
+                    </div>
+                    <div class="gbotinfo">
+                        <div class="gprice">￥{{item.gprice}}</div>
+                        <div class="cart" @click="showBase = true">
+                        <img src="../assets/cart.png" alt="">
+                        </div>
+                    </div>
+                </router-link>
             </li>
         </ul>
         <button>查看全部</button>
