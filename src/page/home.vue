@@ -12,7 +12,7 @@
             <ul class="clearfix">
             <li v-for="(item,index) in goodlists" class="goodsitem fl">
                 <router-link to="/goods">
-                    <img :src="item.goodsImg" alt>
+                    <img :src="item.goodsImg" alt class="goodsImg">
                     <div class="clearfix gmidinfo">
                         <span class="fl advance" v-show="item.isadvance">预售</span>{{item.gname}}
                     </div>
@@ -45,7 +45,7 @@ export default {
                 gname: "新书上架新书上架新书上架新书上架新书上架新书上架新书上架",
                 isadvance: true,
                 gprice: 78,
-                goodsImg:"http://img3m2.ddimg.cn/16/23/25859212-1_l_6.jpg"
+                goodsImg:"https://www.baidu.com/img/dong_41c10f9ee0a17d664b76404d3b276d09.gif"
                 },
                 {
                 gname: "新书上架",
@@ -136,6 +136,10 @@ export default {
       border: 1px solid #f5f5f5;
       margin: 8px 0 0 8px;
       padding: 8px;
+      .goodsImg{
+        width: 159px;
+        height: 159px;
+      }
       img{
         width: 100%;
         display: inline-block;
