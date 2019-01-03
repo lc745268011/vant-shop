@@ -68,10 +68,19 @@
             </div>
         </div>
     </div>
-   
 </div>
+<div class="goodsinfolist">
+        <div>
+            <div>产品</div>
+            <div class="gredNumber">￥{{goods.goodsPrice}}</div>
+        </div>
+        <div>
+            <div>运费</div>
+            <div class="gredNumber">￥{{goods.goodsFreight}}</div>
+        </div>
+    </div>
 <van-submit-bar
-  :price="3050"
+  :price="price"
   button-text="提交订单"
   @submit="onSubmit"
 />
@@ -134,15 +143,19 @@ export default {
           goodstype:'颜色',
           goodsSpecifications:'红色',
           goodsPrice:'79.00',
-          goodsNumber:'2'
-      }
+          goodsNumber:'2',
+          goodsFreight:'10.00'
+      },
+    //   price:0
     };
   },
   computed: {
     cardType() {
       return this.chosenContactId !== null ? 'edit' : 'add';
     },
-
+    price(){
+        return parseInt(this.goods.goodsPrice)*100+parseInt(this.goods.goodsFreight)*100
+    }
   },
   methods: {
     onAdd() {
@@ -192,7 +205,7 @@ export default {
 <style lang="less">
 #order{
     height: 100%;
-    background: #f9f9f9
+    background: #ebebeb
 }
 .havelist{
     font-size: 14px;
@@ -260,6 +273,21 @@ export default {
             .goodsNumber{
                 font-size: 15px;
             }
+        }
+      
+    }
+    
+}
+.goodsinfolist{
+    background: #fff;
+    margin-top: 10px;       
+    >div{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        .gredNumber{
+            color: #f02525;
+            font-size: 16px;
         }
     }
 }
