@@ -13,22 +13,14 @@
       </van-cell>
       <van-cell class="goods-express">
         <van-col span="10">运费：{{ goods.express }}</van-col>
-        <van-col span="14">剩余：{{ goods.remain }}</van-col>
+        <van-col span="14" style="text-align:right">剩余：{{ goods.remain }}</van-col>
       </van-cell>
     </van-cell-group>
-
-    <van-cell-group class="goods-cell-group">
-      <van-cell value="进入店铺" icon="shop" is-link @click="sorry">
-        <template slot="title">
-          <span class="van-cell-text">有赞的店</span>
-          <van-tag class="goods-tag" type="danger">官方</van-tag>
-        </template>
-      </van-cell>
-      <van-cell title="线下门店" icon="location" is-link @click="sorry" />
-    </van-cell-group>
-
-    <van-cell-group class="goods-cell-group">
-      <van-cell title="查看商品详情" is-link @click="sorry" />
+    <van-cell-group>
+      <van-tabs @click="onClick" style="margin-top:20px;">
+        <van-tab title="商品详情"><div class="goodsDetail">内容 1</div></van-tab>
+        <van-tab title="常见问题"><div class="goodsDetail">内容 2</div></van-tab>
+      </van-tabs>
     </van-cell-group>
 
     <van-goods-action>
@@ -59,7 +51,8 @@ import {
   SwipeItem,
   GoodsAction,
   GoodsActionBigBtn,
-  GoodsActionMiniBtn
+  GoodsActionMiniBtn,
+  Tab, Tabs
 } from 'vant';
 export default {
   components: {
@@ -72,7 +65,9 @@ export default {
     [SwipeItem.name]: SwipeItem,
     [GoodsAction.name]: GoodsAction,
     [GoodsActionBigBtn.name]: GoodsActionBigBtn,
-    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn
+    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
+    [Tab.name]: Tab,
+    [Tabs.name]: Tabs
   },
   data() {
     return {
@@ -97,6 +92,9 @@ export default {
     },
     sorry() {
       Toast('暂无后续逻辑~');
+    },
+    onClick(index, title) {
+      // this.$toast(title);
     }
   }
 };
@@ -104,6 +102,7 @@ export default {
 <style lang="less">
 .goods {
   padding-bottom: 50px;
+  background: #f9f9f9;
   &-swipe {
     img {
       width: 100%;
@@ -130,5 +129,11 @@ export default {
   &-tag {
     margin-left: 5px;
   }
+}
+.van-cell:not(:last-child)::after{
+  right: 0.4rem;
+}
+.goodsDetail{
+  padding: 15px;
 }
 </style>

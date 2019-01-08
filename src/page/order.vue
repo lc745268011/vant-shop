@@ -2,24 +2,41 @@
   <div id="order">
 <div @click="showList=true" v-show="list!=''" class="havelist">
     <div>
-        <div>
-            收货人：{{currentContact.name}}
-        </div>
-        <div>
-            联系电话：{{currentContact.tel}}
-        </div>
-        <div>
-            收货地址：{{currentContact.address}}
-        </div>
+        <img src="../assets/location.png" alt="">
     </div>
     <div>
-        <img src="../assets/right.png" alt="">
+        <div class="clearfix">
+            <div class="fl">
+                {{currentContact.name}}
+            </div>
+            <div class="fl" style="margin-left:20px">
+                {{currentContact.tel}}
+            </div>
+        </div>
+        <div>
+            {{currentContact.address}}
+        </div>
     </div>
 </div>
 <div @click="showList=true" v-show="list==''" class="unhavalist">
+  <img src="../assets/add.png" alt="" class="addicon">
   添加收货人信息
 </div>
-
+<ul class="border">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul> 
 <van-popup v-model="showList" position="bottom">
   <van-address-list
   v-model="chosenAddressId"
@@ -46,7 +63,7 @@
 </van-popup>
 
 <div class="goods">
-    <div class="shopname">店铺名称：{{goods.shopname}}</div>
+    <div class="shopname"><img src="../assets/shop.png" class="shopicon"/>店铺名称：{{goods.shopname}}</div>
     <div class="goodsinfo clearfix">
         <div class="gleft fl">
             <img :src="goods.goodsImg" alt="" class="goodsImg">
@@ -70,15 +87,21 @@
     </div>
 </div>
 <div class="goodsinfolist">
-        <div>
-            <div>产品</div>
-            <div class="gredNumber">￥{{goods.goodsPrice}}</div>
-        </div>
-        <div>
-            <div>运费</div>
-            <div class="gredNumber">￥{{goods.goodsFreight}}</div>
-        </div>
+    <div>
+        <div>产品</div>
+        <div class="gredNumber">￥{{goods.goodsPrice}}</div>
     </div>
+    <div>
+        <div>运费</div>
+        <div class="gredNumber">￥{{goods.goodsFreight}}</div>
+    </div>
+</div>
+<div class="goodsinfolist">
+    <div>
+        <div>买家留言</div>
+        <div class="gredNumber"><input type="text" placeholder="140字以内" maxlength="140" style="border:0;text-align:right;color:#333;"></div>
+    </div>
+</div>
 <van-submit-bar
   :price="price"
   button-text="提交订单"
@@ -95,9 +118,9 @@ export default {
     return {
       chosenAddressId: '1',
       currentContact:{
-          name:'zhangsanm',
-          tel:'123456',
-          address:'12121'
+          name:'刘鹏程',
+          tel:'13312345678',
+          address:'山东省青岛市市北区xxxxx'
       },
       showList:false,
       showEdit:false,
@@ -204,20 +227,21 @@ export default {
 
 <style lang="less">
 #order{
-    height: 100%;
-    background: #ebebeb
+    height: 100vh;
+    background: #f9f9f9
 }
 .havelist{
     font-size: 14px;
     padding: 10px 15px;
-    margin-bottom: 10px;
     background: #fff;
     line-height: 30px;
+    color: #000;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items:center;
     img{
-        width: 30px;
+        width: 26px;
+        margin-right: 20px;
     }
 }
 .unhavalist{
@@ -235,9 +259,10 @@ export default {
         line-height: 60px;
         font-size: 15px;
         padding: 0 15px;
+        border-bottom: 1px solid #f0f0f0;
     }
     .goodsinfo{
-        background: #f9f9f9;
+        background: #fff;
         padding: 10px 15px;
         .gleft{
             width: 100px;
@@ -285,10 +310,33 @@ export default {
         display: flex;
         justify-content: space-between;
         padding: 10px 15px;
+        font-size: 15px;
         .gredNumber{
             color: #f02525;
             font-size: 16px;
         }
     }
+}
+.border{
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: -10px;
+    overflow: hidden;
+    li{
+        display: inline-block;
+        margin: 0 0 0 5px;
+        padding: 2px 10px;
+        background: #44a5fc;
+        transform: skew(-30deg)
+    }
+
+    li:nth-child(2n){
+        background: red;
+    }
+}
+.addicon,.shopicon{
+    width: 20px;
+    margin-right: 10px;
+    margin-top: -2px;
 }
 </style>

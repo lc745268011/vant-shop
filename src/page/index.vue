@@ -5,9 +5,9 @@
     </ul>
     <div id="goodslist">
       <div id="toolbar" class="clearfix">
-        <div class="fl">综合</div>
-        <div class="fl">最新</div>
-        <div class="fl">销量</div>
+        <div :class="typeactive=='zh'?'active fl':'fl'" @click="chType('zh')">综合<img v-show="typeactive!='zh'" src="../assets/jt.png" alt=""><img v-show="typeactive=='zh'" src="../assets/jt_active.png" alt=""></div>
+        <div :class="typeactive=='zx'?'active fl':'fl'" @click="chType('zx')">最新<img v-show="typeactive!='zx'" src="../assets/jt.png" alt=""><img v-show="typeactive=='zx'" src="../assets/jt_active.png" alt=""></div>
+        <div :class="typeactive=='xl'?'active fl':'fl'" @click="chType('xl')">销量<img v-show="typeactive!='xl'" src="../assets/jt.png" alt=""><img v-show="typeactive=='xl'" src="../assets/jt_active.png" alt=""></div>
       </div>
       <ul class="clearfix">
         <li v-for="(item,index) in goodlists" class="goodsitem fl">
@@ -99,6 +99,7 @@ export default {
         }
       ],
       active: 0,
+      typeactive:'zh',
       showBase: false,
       sku: {
         // 所有sku规格类目与其值的从属关系，比如商品有颜色和尺码两大类规格，颜色下面又有红色和蓝色两个规格值。
@@ -165,6 +166,9 @@ export default {
     },
     buyClicked(){
        this.$router.push({name: '/order/page1',params:{ id:'1'}});
+    },
+    chType(type){
+      this.typeactive=type;
     }
   }
 };
@@ -189,7 +193,8 @@ export default {
     }
     li.active {
       color: #fd7142;
-      border-left:4px solid #fd7142;
+      // border-left:4px solid #fd7142;
+      background: #f5f5f5;
       padding-left: -4px;
     }
   }
@@ -200,6 +205,13 @@ export default {
       border: 1px solid #f5f5f5;
       border-right:0; 
       border-top:0; 
+      .active{
+        color: #fd7142;
+      }
+      img{
+        width: 8px;
+        margin-left: 5px;
+      }
       div{
         width: 33.3%;
         text-align: center;

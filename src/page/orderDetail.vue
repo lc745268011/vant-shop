@@ -2,21 +2,41 @@
   <div id="order">
 <div class="havelist">
     <div>
-        <div>
-            收货人：{{currentContact.name}}
+        <img src="../assets/location.png" alt="">
+    </div>
+    <div>
+       <div class="clearfix">
+            <div class="fl">
+                {{currentContact.name}}
+            </div>
+            <div class="fl" style="margin-left:20px">
+                {{currentContact.tel}}
+            </div>
         </div>
         <div>
-            联系电话：{{currentContact.tel}}
-        </div>
-        <div>
-            收货地址：{{currentContact.address}}
+            {{currentContact.address}}
         </div>
     </div>
+   
 </div>
-
+<ul class="border">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>   
 
 <div class="goods">
-    <div class="shopname">店铺名称：{{goods.shopname}}</div>
+    <div class="shopname"><img src="../assets/shop.png" class="shopicon"/>店铺名称：{{goods.shopname}}</div>
     <div class="goodsinfo clearfix">
         <div class="gleft fl">
             <img :src="goods.goodsImg" alt="" class="goodsImg">
@@ -50,6 +70,16 @@
         </li>
     </ul>
 </div>
+<div class="orderinfo">
+    <div class="title">
+        买家留言
+    </div>
+    <ul>
+        <li>
+            {{goods.msg}}
+        </li>
+    </ul>
+</div>
 <van-submit-bar
   :price="3050"
   button-text="确认收货"
@@ -75,7 +105,8 @@ export default {
           goodstype:'颜色',
           goodsSpecifications:'红色',
           goodsPrice:'79.00',
-          goodsNumber:'2'
+          goodsNumber:'2',
+          msg:'快点发货哦！'
       },
       orderinfo:[{
           text:'订单编号',
@@ -103,14 +134,14 @@ export default {
 .havelist{
     font-size: 14px;
     padding: 10px 15px;
-    margin-bottom: 10px;
     background: #fff;
     line-height: 30px;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items:center;
     img{
-        width: 30px;
+        width: 26px;
+        margin-right: 20px;
     }
 }
 .unhavalist{
@@ -128,6 +159,7 @@ export default {
         line-height: 60px;
         font-size: 15px;
         padding: 0 15px;
+        border-bottom: 1px solid #f0f0f0;
     }
     .goodsinfo{
         background: #fff;
@@ -174,13 +206,35 @@ export default {
     margin-top: 10px;
     padding: 10px 15px;
     .title{
-        height: 60px;
-        line-height: 60px;
+        height: 50px;
+        line-height: 50px;
         font-size: 15px;
     }
     li{
         line-height:2;
         font-size: 14px;
     }
+}
+.border{
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: -10px;
+    overflow: hidden;
+    li{
+        display: inline-block;
+        margin: 0 0 0 5px;
+        padding: 2px 10px;
+        background: #44a5fc;
+        transform: skew(-30deg)
+    }
+
+    li:nth-child(2n){
+        background: red;
+    }
+}
+.shopicon{
+    width: 20px;
+    margin-right: 10px;
+    margin-top: -2px;
 }
 </style>
